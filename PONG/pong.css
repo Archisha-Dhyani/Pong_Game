@@ -1,0 +1,13 @@
+body{
+    justify-content: center;
+    align-items: center;
+    display:flex;
+
+}
+#board {
+    background-color: black;
+    /* adding border for when ball touches top or bottom it is reflected back*/
+    border-top: 5px solid skyblue;
+    border-bottom: 5px solid skyblue;
+
+}
