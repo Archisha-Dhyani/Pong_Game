@@ -1,4 +1,9 @@
 //board
+
+const collisionSound = new Audio("assets/move.mp3");
+const TouchSound = new Audio("assets/balltouch.mp3");
+const MissSound = new Audio("assets/miss.mp3");
+
 let board;
 
 
@@ -177,6 +182,7 @@ function update(){
     context.fillRect(ball.x, ball.y, ballWidth, ballHeight);
 
      if (ball.y <= 0 || (ball.y + ballHeight >= boardHeight)) {  // if ball touches top or bottom of canvas
+        collisionSound.play();
         ball.velocityY *= -1; //reverse Y direction
     }
 
@@ -184,21 +190,25 @@ function update(){
         //bounce the ball back
         if (detectCollision(ball, player1)) {
             if (ball.x <= player1.x + player1.width) { //left side of ball touches right side of player 1 (left paddle)
+                TouchSound.play();
                 ball.velocityX *= -1;   // flip x direction
             }
         }
         else if (detectCollision(ball, player2)) {
             if (ball.x + ballWidth >= player2.x) { //right side of ball touches left side of player 2 (right paddle)
+                TouchSound.play();
                 ball.velocityX *= -1;   // flip x direction
             }
         } 
 
          //game over
         if (ball.x < 0) { //x position is past left side of canvas, meaning player 2 hit
+            MissSound.play();
             player2Score++;
             resetGame(1);
           }
         else if (ball.x + ballWidth > boardWidth) {   //right side of ball passes board width
+            MissSound.play();
             player1Score++;
             resetGame(-1);
     }

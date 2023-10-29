@@ -3,10 +3,7 @@
 body{
     font-family: 'Poppins', sans-serif; 
     text-align: center;
-    background: #333333;
-    /* background: url('pong_bg.jpg') repeat;  */
-    /* background-size: cover; */
-    
+    background: #333333; 
     color: white; 
 }
 
@@ -36,15 +33,14 @@ body{
     box-shadow: 5px 10px #139f6c;
 }
 
-.button-container {
+.button-container { /* last buttons - START , PAUSE etc*/
     display: flex;
     justify-content: space-between; /* Distribute space between buttons */
     height: 50px; width:600px;
-    /* border-radius: 7px; */
     position: absolute;
     top: 90%; left: 50%; 
     transform: translate(-50%, -50%);
-}
+} 
 
 .button-container button{
     background-color:#139f6c;
@@ -61,6 +57,4 @@ body{
     justify-content: center;
     height:20px;
     width: 20px;
-    
-
 }
