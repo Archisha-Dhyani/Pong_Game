@@ -111,22 +111,33 @@ function resume() {
 }
 
 document.getElementById("restartButton").addEventListener("click", restartGame);
+
 function restartGame() {
     player1Score = 0;
     player2Score = 0;
     player1.y = boardHeight / 2;
     player2.y = boardHeight / 2;
     resetGame(1); // Pass the direction for ball movement after restarting.
+    
+    // Clear the winner message
+    let resultMessage = document.getElementById("resultMessage");
+    resultMessage.textContent = "";
+    resultMessage.style.display = "none";
+    
     update(); // Restart the game by calling the update function.
 }
+
+
 document.getElementById("endButton").addEventListener("click", endGame);
 
 function endGame() {
     let winner;
     if (player1Score > player2Score) {
         winner = p1Name;
-    } else {
+    } else if (player2Score > player1Score) {
         winner = p2Name;
+    } else {
+        winner = "Draw";
     }
     
     // Pause the game
@@ -137,11 +148,9 @@ function endGame() {
     
     // Display the winner's name on the webpage
     let resultMessage = document.getElementById("resultMessage");
-    resultMessage.textContent = `Winner: ${winner}`;
+    resultMessage.textContent = `Result: ${winner}`;
     resultMessage.style.display = "block"; // Show the result message
 }
-
-
 
 
 function update(){
