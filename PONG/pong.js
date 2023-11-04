@@ -219,7 +219,7 @@ function update(){
         else if (ball.x + ballWidth > boardWidth) {   //right side of ball passes board width
             MissSound.play();
             player1Score++;
-            resetGame(-1);
+            resetGame(1);
     }
 
     //score
